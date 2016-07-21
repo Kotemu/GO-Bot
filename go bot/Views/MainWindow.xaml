@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GO_Bot.Views"
+		xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
         Title="MainWindow" Height="425" Width="625" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" Closing="Window_Closing">
 	<Grid>
@@ -95,9 +96,9 @@
 						<ColumnDefinition Width="*"></ColumnDefinition>
 					</Grid.ColumnDefinitions>
 					<Label Grid.Row="0" Grid.Column="0">Latitude:</Label>
-					<TextBox Name="txtLatitude" Grid.Row="0" Grid.Column="1" PreviewTextInput="NumberValidationTextBox"></TextBox>
+					<xctk:DoubleUpDown Name="dudLatitude" Grid.Row="0" Grid.Column="1" Increment="1"></xctk:DoubleUpDown>
 					<Label Grid.Row="1" Grid.Column="0">Longitude:</Label>
-					<TextBox Name="txtLongitude" Grid.Row="1" Grid.Column="1" PreviewTextInput="NumberValidationTextBox"></TextBox>
+					<xctk:DoubleUpDown Name="dudLongitude" Grid.Row="1" Grid.Column="1" Increment="1"></xctk:DoubleUpDown>
 				</Grid>
 			</TabItem>
 		</TabControl>

@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:GO_Bot"
 			 xmlns:converters="clr-namespace:GO_Bot.Views.Converters"
+			 xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              StartupUri="Views\MainWindow.xaml">
     <Application.Resources>
 		<Style TargetType="TextBox">
@@ -16,6 +17,9 @@
 			<Setter Property="Padding" Value="5, 3, 5, 3"></Setter>
 		</Style>
 		<Style TargetType="GroupBox">
+			<Setter Property="Margin" Value="3"></Setter>
+		</Style>
+		<Style TargetType="xctk:DoubleUpDown">
 			<Setter Property="Margin" Value="3"></Setter>
 		</Style>
 

@@ -1,7 +1,6 @@
 ﻿using GO_Bot.Internals;
 using GO_Bot.Models;
 using NLog;
-using PokemonGo.RocketAPI;
 using PokemonGo.RocketAPI.Enums;
 using PokemonGo.RocketAPI.Exceptions;
 using PokemonGo.RocketAPI.Logic;
@@ -40,8 +39,8 @@ namespace GO_Bot.Views {
 					goSettings.AuthType = AuthType.Ptc;
 					await txtUsername.SafeAccessAsync((t) => goSettings.PtcUsername = t.Text);
 					await txtPassword.SafeAccessAsync((t) => goSettings.PtcPassword = t.Password);
-					await txtLatitude.SafeAccessAsync((t) => goSettings.DefaultLatitude = Convert.ToDouble(t.Text));
-					await txtLongitude.SafeAccessAsync((t) => goSettings.DefaultLongitude = Convert.ToDouble(t.Text));
+					await dudLatitude.SafeAccessAsync((d) => goSettings.DefaultLatitude = d.Value ?? 0);
+					await dudLongitude.SafeAccessAsync((d) => goSettings.DefaultLongitude = d.Value ?? 0);
 
 					try {
 						logger.Info("Beginning to farm...");
@@ -78,8 +77,8 @@ namespace GO_Bot.Views {
 				settings.PtcPassword = txtPassword.Password.Protect();
 			} catch { }
 
-			settings.Latitude = Convert.ToDouble(txtLatitude.Text);
-			settings.Longitude = Convert.ToDouble(txtLongitude.Text);
+			settings.Latitude = dudLatitude.Value ?? 0;
+			settings.Longitude = dudLongitude.Value ?? 0;
 
 			Settings.Save();
 			Environment.Exit(0);
@@ -131,13 +130,8 @@ namespace GO_Bot.Views {
 				txtPassword.Password = settings.PtcPassword.Unprotect();
 			} catch { }
 
-			txtLatitude.Text = settings.Latitude.ToString();
-			txtLongitude.Text = settings.Longitude.ToString();
-		}
-
-		private void NumberValidationTextBox(object sender, TextCompositionEventArgs e) {
-			Regex regex = new Regex("[^0-9]+");
-			e.Handled = regex.IsMatch(e.Text);
+			dudLatitude.Value = settings.Latitude;
+			dudLongitude.Value = settings.Longitude;
 		}
 		
 	}

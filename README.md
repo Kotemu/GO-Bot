@@ -5,6 +5,7 @@ Features:
 - Loot Pokestops for XP and items
 - Catch Pokemon
 - Transfers duplicate Pokemon
+- Contributes to the distance required to hatch eggs
 - Customizable latitude/longitude as default location
 - More to come!
 

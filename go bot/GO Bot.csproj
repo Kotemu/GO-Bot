@@ -47,7 +47,11 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Pokemon Go Rocket API">
-      <HintPath>..\Pokemon-Go-Rocket-API\PokemonGo\RocketAPI\bin\Release\Pokemon Go Rocket API.dll</HintPath>
+      <HintPath>..\Pokemon-Go-Rocket-API\PokemonGo.RocketAPI.Console\bin\Release\Pokemon Go Rocket API.dll</HintPath>
+    </Reference>
+    <Reference Include="PokemonGo.RocketAPI.Logic, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Pokemon-Go-Rocket-API\PokemonGo.RocketAPI.Logic\bin\Release\PokemonGo.RocketAPI.Logic.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />

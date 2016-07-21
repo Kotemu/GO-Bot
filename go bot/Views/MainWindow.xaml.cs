@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
@@ -33,12 +34,14 @@ namespace GO_Bot.Views {
 			Model = MainWindowModel.Create();
 			DataContext = Model;
 			backgroundTask = new BackgroundTask(() => {
-				bool b = Task.Run<bool>(async () => {
+				bool b = Task.Run(async () => {
 					GoSettings goSettings = new GoSettings();
 					var client = new Client(goSettings);
 
 					await txtUsername.SafeAccessAsync((t) => goSettings.PtcUsername = t.Text);
 					await txtPassword.SafeAccessAsync((t) => goSettings.PtcPassword = t.Password);
+					await txtLatitude.SafeAccessAsync((t) => goSettings.DefaultLatitude = Convert.ToDouble(t.Text));
+					await txtLongitude.SafeAccessAsync((t) => goSettings.DefaultLongitude = Convert.ToDouble(t.Text));
 					logger.Info("Logging in...");
 					await client.DoPtcLogin(goSettings.PtcUsername, goSettings.PtcPassword);
 					logger.Info("Setting up...");
@@ -52,6 +55,7 @@ namespace GO_Bot.Views {
 
 					logger.Info("Beginning to farm...");
 					await ExecuteFarmingPokestopsAndPokemons(client);
+					logger.Info("Farmed everything around your default coordinates!");
 
 					return true;
 				}).Result;
@@ -70,6 +74,14 @@ namespace GO_Bot.Views {
 			settings.WindowTop = Top;
 			settings.WindowWidth = Width;
 			settings.WindowHeight = Height;
+			settings.PtcUsername = txtUsername.Text;
+
+			try {
+				settings.PtcPassword = txtPassword.Password.Protect();
+			} catch { }
+
+			settings.Latitude = Convert.ToDouble(txtLatitude.Text);
+			settings.Longitude = Convert.ToDouble(txtLongitude.Text);
 
 			Settings.Save();
 			Environment.Exit(0);
@@ -114,6 +126,20 @@ namespace GO_Bot.Views {
 				Height = settings.WindowHeight;
 			}
 #endif
+
+			txtUsername.Text = settings.PtcUsername;
+
+			try {
+				txtPassword.Password = settings.PtcPassword.Unprotect();
+			} catch { }
+
+			txtLatitude.Text = settings.Latitude.ToString();
+			txtLongitude.Text = settings.Longitude.ToString();
+		}
+
+		private void NumberValidationTextBox(object sender, TextCompositionEventArgs e) {
+			Regex regex = new Regex("[^0-9]+");
+			e.Handled = regex.IsMatch(e.Text);
 		}
 
 		private static async Task ExecuteFarmingPokestopsAndPokemons(Client client) {

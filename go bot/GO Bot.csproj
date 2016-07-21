@@ -51,6 +51,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -83,6 +84,7 @@
     <Compile Include="Internals\ListBoxWriter.cs" />
     <Compile Include="Internals\NLogConfig.cs" />
     <Compile Include="Internals\Settings.cs" />
+    <Compile Include="Internals\StringExtensions.cs" />
     <Compile Include="Models\MainWindowModel.cs" />
     <Compile Include="Views\Converters\MathConverter.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">

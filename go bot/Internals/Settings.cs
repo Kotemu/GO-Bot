@@ -32,6 +32,7 @@ namespace GO_Bot.Internals {
 
 	}
 
+	// TODO make this the MainWindow data context
 	[JsonObject(MemberSerialization = MemberSerialization.OptOut)]
 	internal class GeneralSettings {
 
@@ -39,6 +40,10 @@ namespace GO_Bot.Internals {
 		public double WindowTop;
 		public double WindowWidth;
 		public double WindowHeight;
+		public string PtcUsername;
+		public string PtcPassword;
+		public double Latitude = 39.986855;
+		public double Longitude = -75.196442;
 
 	}
 

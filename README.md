@@ -10,7 +10,7 @@ Automation platform (auto farmer, bot, etc.) for the popular game Pokemon GO. Th
 - More to come!
 
 ## Usage
-For those who want the standalone application and not the source you can download the latest release from the releases tab at the top. Simply download the first zip archive ("GO Bot v0-0-2.zip"), extract and run "GO Bot.exe".
+For those who want the standalone application and not the source you can download the latest release from the releases tab at the top. Simply download the first zip archive ("GO Bot v0-0-3.zip"), extract and run "GO Bot.exe".
 
 ![alt tag](https://i.gyazo.com/e3bf47995475467b6ce6b7c2365e2d90.png)
 

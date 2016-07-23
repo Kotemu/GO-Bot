@@ -5,13 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GO_Bot.Views"
 		xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+		xmlns:gmap="clr-namespace:GMap.NET.WindowsPresentation;assembly=GMap.NET.WindowsPresentation"
         mc:Ignorable="d"
         Title="MainWindow" Height="425" Width="625" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" Closing="Window_Closing">
 	<Grid>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="Auto"></RowDefinition>
 			<RowDefinition Height="*"></RowDefinition>
-			<RowDefinition Height="125"></RowDefinition>
+			<RowDefinition Height="5"></RowDefinition>
+			<RowDefinition Height="*"></RowDefinition>
 		</Grid.RowDefinitions>
 		<Border Grid.Row="0" Background="#ECECEC" BorderBrush="LightGray" BorderThickness="2" CornerRadius="4" Margin="3">
 			<Grid>
@@ -90,18 +92,25 @@
 					<Grid.RowDefinitions>
 						<RowDefinition Height="Auto"></RowDefinition>
 						<RowDefinition Height="Auto"></RowDefinition>
+						<RowDefinition Height="Auto"></RowDefinition>
 					</Grid.RowDefinitions>
 					<Grid.ColumnDefinitions>
 						<ColumnDefinition Width="Auto"></ColumnDefinition>
 						<ColumnDefinition Width="*"></ColumnDefinition>
 					</Grid.ColumnDefinitions>
-					<Label Grid.Row="0" Grid.Column="0">Latitude:</Label>
+					<Label Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right">Latitude:</Label>
 					<xctk:DoubleUpDown Name="dudLatitude" Grid.Row="0" Grid.Column="1" Increment="1"></xctk:DoubleUpDown>
-					<Label Grid.Row="1" Grid.Column="0">Longitude:</Label>
+					<Label Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right">Longitude:</Label>
 					<xctk:DoubleUpDown Name="dudLongitude" Grid.Row="1" Grid.Column="1" Increment="1"></xctk:DoubleUpDown>
+					<!--<Label Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right">Transfer duplicate Pokemon:</Label>
+					<CheckBox Name="chkTransferDuplicatePokemon" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center"></CheckBox>-->
 				</Grid>
 			</TabItem>
+			<TabItem Header="Map">
+				<gmap:GMapControl Name="gmap" CanDragMap="False"></gmap:GMapControl>
+			</TabItem>
 		</TabControl>
-		<ListBox Name="lbLog" Grid.Row="2"></ListBox>
+		<GridSplitter Grid.Row="2" Height="5" HorizontalAlignment="Stretch"></GridSplitter>
+		<ListBox Name="lbLog" Grid.Row="3"></ListBox>
 	</Grid>
 </Window>

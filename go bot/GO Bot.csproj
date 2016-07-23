@@ -35,6 +35,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="GMap.NET.Core, Version=1.7.0.0, Culture=neutral, PublicKeyToken=b85b9027b614afef, processorArchitecture=MSIL">
+      <HintPath>..\packages\GMap.NET.Presentation.1.7.1\lib\net40\GMap.NET.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GMap.NET.WindowsPresentation, Version=1.7.0.0, Culture=neutral, PublicKeyToken=b85b9027b614afef, processorArchitecture=MSIL">
+      <HintPath>..\packages\GMap.NET.Presentation.1.7.1\lib\net40\GMap.NET.WindowsPresentation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Google.Protobuf">
       <HintPath>..\Pokemon-Go-Rocket-API\PokemonGo\RocketAPI\bin\Release\Google.Protobuf.dll</HintPath>
     </Reference>
@@ -45,13 +53,6 @@
     <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
       <HintPath>..\packages\NLog.4.3.5\lib\net45\NLog.dll</HintPath>
       <Private>True</Private>
-    </Reference>
-    <Reference Include="Pokemon Go Rocket API">
-      <HintPath>..\Pokemon-Go-Rocket-API\PokemonGo.RocketAPI.Console\bin\Release\Pokemon Go Rocket API.dll</HintPath>
-    </Reference>
-    <Reference Include="PokemonGo.RocketAPI.Logic, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Pokemon-Go-Rocket-API\PokemonGo.RocketAPI.Logic\bin\Release\PokemonGo.RocketAPI.Logic.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -106,11 +107,15 @@
     </Compile>
     <Compile Include="Internals\ApplicationEnvironment.cs" />
     <Compile Include="Internals\BackgroundTask.cs" />
+    <Compile Include="Internals\Bot\Inventory.cs" />
+    <Compile Include="Internals\Bot\Navigation.cs" />
     <Compile Include="Internals\DispatcherObjectExtensions.cs" />
+    <Compile Include="Internals\Bot\GoLogic.cs" />
     <Compile Include="Internals\GoSettings.cs" />
     <Compile Include="Internals\ListBoxExtensions.cs" />
     <Compile Include="Internals\ListBoxWriter.cs" />
     <Compile Include="Internals\NLogConfig.cs" />
+    <Compile Include="Internals\NLogLogger.cs" />
     <Compile Include="Internals\Settings.cs" />
     <Compile Include="Internals\StringExtensions.cs" />
     <Compile Include="Models\MainWindowModel.cs" />
@@ -153,6 +158,12 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PokemonGo.RocketAPI\PokemonGo.RocketAPI.csproj">
+      <Project>{05d2da44-1b8e-4cf7-94ed-4d52451cd095}</Project>
+      <Name>PokemonGo.RocketAPI</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,12 +1,13 @@
-﻿using GO_Bot.Internals;
+﻿using GMap.NET;
+using GMap.NET.MapProviders;
+using GO_Bot.Internals;
+using GO_Bot.Internals.Bot;
 using GO_Bot.Models;
 using NLog;
 using PokemonGo.RocketAPI.Enums;
 using PokemonGo.RocketAPI.Exceptions;
-using PokemonGo.RocketAPI.Logic;
 using System;
 using System.ComponentModel;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
@@ -44,8 +45,8 @@ namespace GO_Bot.Views {
 
 					try {
 						logger.Info("Beginning to farm...");
-						PokemonGo.RocketAPI.Logger.SetLogger(new PokemonGo.RocketAPI.Logging.ConsoleLogger(PokemonGo.RocketAPI.LogLevel.Info));
-						await new Logic(goSettings).Execute();
+						PokemonGo.RocketAPI.Logger.SetLogger(new NLogLogger());
+						await new GoLogic(goSettings).Execute();
 					} catch (Exception e) {
 						if (e is PtcOfflineException) {
 							logger.Info("Could not log in (login servers may be down or invalid credentials)");
@@ -61,6 +62,10 @@ namespace GO_Bot.Views {
 		}
 
 		private void Window_Loaded(object sender, RoutedEventArgs e) {
+			GMaps.Instance.Mode = AccessMode.ServerOnly;
+			gmap.MapProvider = BingMapProvider.Instance;
+			gmap.Position = new PointLatLng(Settings.GeneralSettings.Latitude, Settings.GeneralSettings.Longitude);
+			gmap.Zoom = 15;
 			logger.Info("Welcome to GO Bot!");
 		}
 

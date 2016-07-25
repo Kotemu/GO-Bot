@@ -110,6 +110,9 @@ namespace PokemonGo.RocketAPI
 
         public async Task SetServer()
         {
+            if(AccessToken == null)
+                throw new AccessTokenExpiredException();
+
             var serverRequest = RequestBuilder.GetInitialRequest(AccessToken, _authType, CurrentLat, CurrentLng, CurrentAltitude,
                 RequestType.GET_PLAYER, RequestType.GET_HATCHED_OBJECTS, RequestType.GET_INVENTORY,
                 RequestType.CHECK_AWARDED_BADGES, RequestType.DOWNLOAD_SETTINGS);

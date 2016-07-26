@@ -35,7 +35,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Google.Protobuf, Version=3.0.0.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
-      <HintPath>..\packages\Google.Protobuf.3.0.0-beta3\lib\dotnet\Google.Protobuf.dll</HintPath>
+      <HintPath>..\packages\Google.Protobuf.3.0.0-beta4\lib\net45\Google.Protobuf.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -106,7 +106,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Proto\AllEnum.proto" />
     <None Include="Proto\Payloads.proto" />
     <None Include="Proto\Response.proto" />
